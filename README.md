@@ -69,3 +69,17 @@ createRoot(document.getElementById('root')).render(
 ```bash
 npm install sweetalert2
 ```
+
+## step ?? react-hook-form
+
+https://www.react-hook-form.com/get-started
+
+```bash
+npm install react-hook-form
+```
+
+## step  validation front end install zod in front end
+```bash
+npm install @hookform/resolvers
+npm i zod
+```
