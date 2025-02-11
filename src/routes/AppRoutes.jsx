@@ -10,36 +10,39 @@ import Manage from '../pages/admin/Manage'
 import User from '../pages/user/User'
 import Notfound from '../pages/Notfound'
 import Register1 from '../pages/auth/Register1'
+import ProtectRoute from './ProtectRoute'
 
 function AppRoutes() {
-  return (
-    <>
-        <Routes>
+    return (
+        <>
+            <Routes>
 
-            {/* Public*/}
-            <Route path = "/" element={<Layout/>}>
-                <Route index element={<Home/>}/>
-                <Route path ="about" element={<About/>}/>
-                <Route path ="register" element={<Register1/>}/>
-                <Route path ="login" element ={<Login/>}/>
-            </Route>
+                {/* Public*/}
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="register" element={<Register1 />} />
+                    <Route path="login" element={<Login />} />
+                </Route>
 
-            {/* private [USER]*/}
-            <Route path = "user" element ={<Layout/>}>
-                <Route index element ={<User />}/>
-            </Route>
+                {/* private [USER]*/}
+                <Route path="user"
+                    element={<ProtectRoute el={<Layout />} allows={["USER"]} />}>
+                    <Route index element={<User />} />
+                </Route>
 
-            {/* private [ADMIN]*/}
-            <Route path = "admin" element ={<Layout />}>
-                <Route index element={<Dashboard/>}/>
-                <Route path ="manage" element={<Manage/>}/>
-            </Route>
+                {/* private [ADMIN]*/}
+                <Route path="admin"
+                    element={<ProtectRoute el={<Layout />} allows={["ADMIN"]} />}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="manage" element={<Manage />} />
+                </Route>
 
-            <Route path ="*" element={<Notfound/>}/>
+                <Route path="*" element={<Notfound />} />
 
-        </Routes>
-    </>
-  )
+            </Routes>
+        </>
+    )
 }
 
 export default AppRoutes
